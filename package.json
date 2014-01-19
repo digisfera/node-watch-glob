@@ -1,0 +1,37 @@
+{
+  "name": "watch-glob",
+  "version": "0.0.1",
+  "description": "Watch glob patterns",
+  "main": "src/index.coffee",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:manuelcabral/node-watch-glob.git"
+  },
+  "keywords": [
+    "watch",
+    "glob",
+    "gaze"
+  ],
+  "author": "Manuel Cabral (m.cabral@digisfera.pt)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuelcabral/node-watch-glob/issues"
+  },
+  "homepage": "https://github.com/manuelcabral/node-watch-glob",
+  "dependencies": {
+    "coffee-script": "~1.6.3",
+    "gaze": "~0.4.3",
+    "lodash": "~2.4.1",
+    "vinyl": "~0.2.3",
+    "globule": "~0.2.0"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.17.0",
+    "sinon": "~1.7.3",
+    "rimraf": "~2.2.6"
+  }
+}
