@@ -1,6 +1,6 @@
 {
   "name": "watch-glob",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Watch glob patterns",
   "main": "lib/index.js",
   "scripts": {
