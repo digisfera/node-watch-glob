@@ -6,7 +6,9 @@ Vinyl = require('vinyl')
 
 watchGlob = (patterns, options, addedCallback, removedCallback) ->
 
-  watcher = new Gaze(patterns, { cwd: options?.cwd })
+  watcher = new Gaze([], { cwd: options?.cwd })
+
+  setTimeout(( -> watcher.add(patterns)), options.delay)
 
   watcher.on 'all', (evt, absoluteFilepath) ->
     #console.log("watcher #{patterns}: event #{evt} on #{absoluteFilepath}")
@@ -58,9 +60,11 @@ module.exports = (args...) ->
 
 
   options.cwd = options.cwd || process.cwd()
-
+  
   addedCallback = args[callbacksIndex] || (->)
   removedCallback = args[callbacksIndex + 1] || (->)
+
+  options.delay = if options.delay? then options.delay else 2000
 
   watchGlob(patterns, options, addedCallback, removedCallback)
 
