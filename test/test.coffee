@@ -125,6 +125,31 @@ describe 'watch-glob', ->
       w.destroy()
       done()
 
+    
+  it 'should work when options is not specified', (done) ->
+    w = watchGlob('test/tmp/f1.txt', spyAdded, spyRemoved)
+    fs.writeFileSync(testFilePath('f1.txt'), 'test')
+    delayForWatch ->
+      expect(spyAdded.callCount).to.equal(1)
+      expect(spyAdded.firstCall.args[0]).to.have.property('relative').that.equals(path.normalize('test/tmp/f1.txt'))
+      expect(spyAdded.firstCall.args[0]).to.have.property('base').that.equals(path.normalize(process.cwd()))
+      expect(spyAdded.firstCall.args[0]).to.have.property('path').that.equals(testFilePath('f1.txt'))
+      expect(spyRemoved.callCount).to.equal(0)
+      w.destroy()
+      done()
+
+  it 'should use base path when string is given instead of options', (done) ->
+    w = watchGlob('f1.txt', testFilePath(), spyAdded, spyRemoved)
+    fs.writeFileSync(testFilePath('f1.txt'), 'test')
+    delayForWatch ->
+      expect(spyAdded.callCount).to.equal(1)
+      expect(spyAdded.firstCall.args[0]).to.have.property('relative').that.equals('f1.txt')
+      expect(spyAdded.firstCall.args[0]).to.have.property('base').that.equals(testFilePath())
+      expect(spyAdded.firstCall.args[0]).to.have.property('path').that.equals(testFilePath('f1.txt'))
+      expect(spyRemoved.callCount).to.equal(0)
+      w.destroy()
+      done()    
+
   describe 'callbackArg', ->
     it 'should support `relative`', (done) ->
       w = watchGlob('test/tmp/f1.txt', { callbackArg: 'relative' }, spyAdded, spyRemoved)

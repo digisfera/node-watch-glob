@@ -2,24 +2,36 @@
 
 Watch files and directories with glob patterns
 
+## Installation
+
+    npm install watch-glob
 
 ## Usage
 
-**watchGlob(patterns, options, addedCallback[, removedCallback ])**
+**watchGlob(patterns, [options], addedCallback, [removedCallback] ])**
 
-`addedCallback` is called when a file is changed, created, or "created" through a rename
-`removedCallback` is called when a file is deleted or "deleted" through a rename
+* `patterns` - a glob pattern or array of glob patterns to watch
+* `options` - the base folder in which to search for the patterns (equivalent to `options.cwd`) an options object to pass to `glob()`, plus the following:
+  * `callbackArg` - how the file should be represented on the callback
+    * `absolute` - absolute path
+    * `relative` - path relative to `options.cwd´
+    * `vinyl` - a [vinyl-fs](https://github.com/wearefractal/vinyl-fs) object (experimental)
+    * `object`(default) - { base, path, relative }
+* `updateCallback` - function to be called when a file is changed, created, or "created" through a rename
+* `removeCallback` - function to be called after a file is is deleted or "deleted" through a rename
 
-    var watchGlob = require('watch-glob');
-    function livereload(filePath) { /* perform livereload */ }
-    watchGlob(['tmp/**/*'], {}, livereload);
 
-The `cwd` option can be used when relative paths are needed
+## Example
 
-    var watchGlob = require('watch-glob');
-    var coffeeFun = require('coffee-file-fun')
-    watchGlob(['coffee/**/*.coffee'], { cwd: 'src' }, function(filepath) {
-      coffeeFun.globToDir(filepath, { cwd: 'src' }, 'tmp/coffee')
+    var watchGlob = require('watch-glob'),
+        coffee = require('coffee-files');
+
+    watchGlob(['tmp/**/*', 'lib/**/*'], { callbackArg: 'relative' }, function(filePath) {
+      // Perform livereload
+    });
+
+    watchGlob('coffee/**/*.coffee', { cwd: 'src' }, function(filepath) {
+      coffee.file(filepath.path, 'build/' + filepath.relative);
     });
 
 

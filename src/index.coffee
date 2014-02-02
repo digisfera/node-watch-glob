@@ -49,6 +49,9 @@ module.exports = (args...) ->
   if _.isPlainObject(args[1])
     options = args[1]
     callbacksIndex = 2
+  else if _.isString(args[1])
+    options = { cwd: args[1] }
+    callbacksIndex = 2  
   else
     options = {}
     callbacksIndex = 1

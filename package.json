@@ -1,6 +1,6 @@
 {
   "name": "watch-glob",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Watch glob patterns",
   "main": "lib/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:manuelcabral/node-watch-glob.git"
+    "url": "git@github.com:digisfera/node-watch-glob.git"
   },
   "keywords": [
     "watch",
@@ -19,9 +19,9 @@
   "author": "Manuel Cabral (m.cabral@digisfera.pt)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/manuelcabral/node-watch-glob/issues"
+    "url": "https://github.com/digisfera/node-watch-glob/issues"
   },
-  "homepage": "https://github.com/manuelcabral/node-watch-glob",
+  "homepage": "https://github.com/digisfera/node-watch-glob",
   "dependencies": {
     "gaze": "~0.4.3",
     "lodash": "~2.4.1",
