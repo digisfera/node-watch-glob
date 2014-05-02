@@ -1,6 +1,6 @@
 {
   "name": "watch-glob",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Watch glob patterns",
   "main": "lib/index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/digisfera/node-watch-glob",
   "dependencies": {
-    "gaze": "~0.4.3",
+    "gaze": "~0.6.0",
     "lodash": "~2.4.1",
     "vinyl": "~0.2.3",
     "globule": "~0.2.0"
