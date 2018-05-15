@@ -24,15 +24,15 @@
   "homepage": "https://github.com/digisfera/node-watch-glob",
   "dependencies": {
     "gaze": "~0.5.0",
+    "globule": "^1.2.0",
     "lodash": "~2.4.1",
-    "vinyl": "~0.2.3",
-    "globule": "~0.2.0"
+    "vinyl": "~0.2.3"
   },
   "devDependencies": {
-    "coffee-script": "~1.6.3",
     "chai": "~1.8.1",
+    "coffee-script": "~1.6.3",
     "mocha": "~1.17.0",
-    "sinon": "~1.7.3",
-    "rimraf": "~2.2.6"
+    "rimraf": "~2.2.6",
+    "sinon": "~1.7.3"
   }
 }
